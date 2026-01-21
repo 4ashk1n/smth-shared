@@ -1,23 +1,22 @@
 {
-  "name": "smth-shared",
+  "name": "@smth/shared",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
-    "@nestjs/common": "^11.1.5",
     "zod": "^4.0.14"
   },
   "devDependencies": {
-    "tsup": "^8.5.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.0.0"
   }
 }
