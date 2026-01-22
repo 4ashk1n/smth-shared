@@ -15,3 +15,4 @@ export type Page = z.infer<typeof PageSchema>;
 export type Topic = z.infer<typeof TopicSchema>;
 export type Content = z.infer<typeof ContentSchema>;
 export type BlockType = Block['type'];
+
