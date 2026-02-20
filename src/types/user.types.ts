@@ -1,6 +1,6 @@
 import z from "zod";
-import { UserSchema } from "../schemas/user.schema";
+import { CreateUserSchema, UpdateUserSchema, UserSchema } from "../schemas/user.schema";
 
 export type User = z.infer<typeof UserSchema>;
-export type UserCreate = z.infer<typeof UserSchema>;
-export type UserUpdate = z.infer<typeof UserSchema>;
+export type UserCreate = z.infer<typeof CreateUserSchema>;
+export type UserUpdate = z.infer<typeof UpdateUserSchema>;

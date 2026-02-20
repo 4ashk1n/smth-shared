@@ -7,7 +7,7 @@ export const CategoryColorsSchema = z.object({
 });
 
 export const CategorySchema = z.object({
-    id: z.uuid(),
+    id: z.string(),
     name: z.string().min(1).max(50),
     emoji: z.string(),
     colors: CategoryColorsSchema,
