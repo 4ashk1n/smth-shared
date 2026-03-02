@@ -1,17 +1,20 @@
 import { z } from 'zod';
 
-export const CategoryColorsSchema = z.object({
-    lightColor: z.string(),
-    darkColor: z.string(),
-    accentColor: z.string(),
-});
+export const CategoryColorsSchema = z.unknown();
 
 export const CategorySchema = z.object({
-    id: z.string(),
-    name: z.string().min(1).max(50),
-    emoji: z.string(),
-    colors: CategoryColorsSchema,
+  id: z.uuid(),
+  name: z.string().min(1),
+  emoji: z.string(),
+  colors: CategoryColorsSchema,
+  createdAt: z.date(),
+  updatedAt: z.date(),
 });
 
-export const CreateCategorySchema = CategorySchema.omit({ id: true });
+export const CreateCategorySchema = CategorySchema.omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
 export const UpdateCategorySchema = CreateCategorySchema.partial();
