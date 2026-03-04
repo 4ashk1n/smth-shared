@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { SuccessResponseSchema } from './response.schema';
 
 export const CategoryColorsSchema = z.unknown();
 
@@ -18,3 +19,16 @@ export const CreateCategorySchema = CategorySchema.omit({
 });
 
 export const UpdateCategorySchema = CreateCategorySchema.partial();
+
+export const CategoryListSchema = z.array(CategorySchema);
+
+export const CategoryResponseSchema = SuccessResponseSchema(CategorySchema);
+export const CategoryListResponseSchema =
+  SuccessResponseSchema(CategoryListSchema);
+export const CreateCategoryResponseSchema = SuccessResponseSchema(CategorySchema);
+export const UpdateCategoryResponseSchema = SuccessResponseSchema(CategorySchema);
+export const DeleteCategoryResponseSchema = SuccessResponseSchema(
+  z.object({
+    id: z.uuid(),
+  }),
+);

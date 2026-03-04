@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { SuccessResponseSchema } from './response.schema';
 
 export const UserRoleSchema = z.enum([
   'user',
@@ -34,3 +35,9 @@ export const CreateUserSchema = z.object({
 });
 
 export const UpdateUserSchema = CreateUserSchema.partial();
+
+export const UserListSchema = z.array(UserSchema);
+
+export const UserResponseSchema = SuccessResponseSchema(UserSchema);
+export const UserListResponseSchema = SuccessResponseSchema(UserListSchema);
+export const UpdateUserResponseSchema = SuccessResponseSchema(UserSchema);

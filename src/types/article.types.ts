@@ -2,20 +2,32 @@ import { z } from 'zod';
 import {
   ArticleDTOSchema,
   ArticleLegacyMainCategoryAliasSchema,
+  ArticleListResponseSchema,
   ArticleListQuerySchema,
   ArticleMetaSchema,
+  ArticleMetaResponseSchema,
   ArticleReactionResponseSchema,
+  ArticleResponseSchema,
   ArticleSchema,
+  CreateArticleResponseSchema,
   CreateArticleLegacyMainCategoryAliasSchema,
   CreateArticleSchema,
   DislikeArticleResponseSchema,
+  DislikeArticlePayloadSchema,
   LikeArticleResponseSchema,
+  LikeArticlePayloadSchema,
   UpdateArticleSchema,
+  UpdateArticleResponseSchema,
   UserArticleListItemSchema,
+  UserLikedArticlesListSchema,
   UserLikedArticlesResponseSchema,
+  UserOtherArticlesListSchema,
   UserOtherArticlesResponseSchema,
+  UserPublishedArticlesListSchema,
   UserPublishedArticlesResponseSchema,
+  UserRepostedArticlesListSchema,
   UserRepostedArticlesResponseSchema,
+  UserSavedArticlesListSchema,
   UserSavedArticlesResponseSchema,
 } from '../schemas/article.schema';
 
@@ -30,8 +42,22 @@ export type ArticleUpdate = z.infer<typeof UpdateArticleSchema>;
 export type ArticleReactionResponse = z.infer<typeof ArticleReactionResponseSchema>;
 export type LikeArticleResponse = z.infer<typeof LikeArticleResponseSchema>;
 export type DislikeArticleResponse = z.infer<typeof DislikeArticleResponseSchema>;
+export type LikeArticlePayload = z.infer<typeof LikeArticlePayloadSchema>;
+export type DislikeArticlePayload = z.infer<typeof DislikeArticlePayloadSchema>;
+
+export type ArticleResponse = z.infer<typeof ArticleResponseSchema>;
+export type ArticleMetaResponse = z.infer<typeof ArticleMetaResponseSchema>;
+export type ArticleListResponse = z.infer<typeof ArticleListResponseSchema>;
+export type CreateArticleResponse = z.infer<typeof CreateArticleResponseSchema>;
+export type UpdateArticleResponse = z.infer<typeof UpdateArticleResponseSchema>;
 
 export type UserArticleListItem = z.infer<typeof UserArticleListItemSchema>;
+export type UserPublishedArticlesList = z.infer<typeof UserPublishedArticlesListSchema>;
+export type UserOtherArticlesList = z.infer<typeof UserOtherArticlesListSchema>;
+export type UserLikedArticlesList = z.infer<typeof UserLikedArticlesListSchema>;
+export type UserSavedArticlesList = z.infer<typeof UserSavedArticlesListSchema>;
+export type UserRepostedArticlesList = z.infer<typeof UserRepostedArticlesListSchema>;
+
 export type UserPublishedArticlesResponse = z.infer<typeof UserPublishedArticlesResponseSchema>;
 export type UserOtherArticlesResponse = z.infer<typeof UserOtherArticlesResponseSchema>;
 export type UserLikedArticlesResponse = z.infer<typeof UserLikedArticlesResponseSchema>;

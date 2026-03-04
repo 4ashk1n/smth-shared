@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { DateTimeSchema } from './article.schema';
+import { SuccessResponseSchema } from './response.schema';
 import { UserSchema } from './user.schema';
 
 export const UserPreviewSchema = UserSchema.pick({
@@ -30,3 +31,12 @@ export const UnsubscribeResponseSchema = z.object({
 
 export const FollowersResponseSchema = SubscriptionListSchema;
 export const FollowingResponseSchema = SubscriptionListSchema;
+
+export const SubscribeUserResponseSchema =
+  SuccessResponseSchema(SubscribeResponseSchema);
+export const UnsubscribeUserResponseSchema =
+  SuccessResponseSchema(UnsubscribeResponseSchema);
+export const UserFollowersResponseSchema =
+  SuccessResponseSchema(FollowersResponseSchema);
+export const UserFollowingResponseSchema =
+  SuccessResponseSchema(FollowingResponseSchema);

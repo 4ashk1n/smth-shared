@@ -1,4 +1,8 @@
 import { z } from 'zod';
+import {
+  PaginatedSuccessResponseSchema,
+  SuccessResponseSchema,
+} from './response.schema';
 
 export const DateTimeSchema = z.union([z.date(), z.string().datetime()]);
 
@@ -82,12 +86,60 @@ export const ArticleReactionResponseSchema = z.object({
   disliked: z.boolean(),
 });
 
-export const LikeArticleResponseSchema = ArticleReactionResponseSchema;
-export const DislikeArticleResponseSchema = ArticleReactionResponseSchema;
-
 export const UserArticleListItemSchema = ArticleMetaSchema;
-export const UserPublishedArticlesResponseSchema = z.array(UserArticleListItemSchema);
-export const UserOtherArticlesResponseSchema = z.array(UserArticleListItemSchema);
-export const UserLikedArticlesResponseSchema = z.array(UserArticleListItemSchema);
-export const UserSavedArticlesResponseSchema = z.array(UserArticleListItemSchema);
-export const UserRepostedArticlesResponseSchema = z.array(UserArticleListItemSchema);
+export const UserPublishedArticlesListSchema = z.array(UserArticleListItemSchema);
+export const UserOtherArticlesListSchema = z.array(UserArticleListItemSchema);
+export const UserLikedArticlesListSchema = z.array(UserArticleListItemSchema);
+export const UserSavedArticlesListSchema = z.array(UserArticleListItemSchema);
+export const UserRepostedArticlesListSchema = z.array(UserArticleListItemSchema);
+
+export const ArticleResponseSchema = SuccessResponseSchema(ArticleSchema);
+export const ArticleMetaResponseSchema = SuccessResponseSchema(ArticleMetaSchema);
+export const ArticleListResponseSchema = PaginatedSuccessResponseSchema(ArticleMetaSchema);
+export const CreateArticleResponseSchema = SuccessResponseSchema(ArticleSchema);
+export const UpdateArticleResponseSchema = SuccessResponseSchema(ArticleSchema);
+export const LikeArticleResponseSchema = SuccessResponseSchema(ArticleReactionResponseSchema);
+export const DislikeArticleResponseSchema = SuccessResponseSchema(ArticleReactionResponseSchema);
+
+export const UserPublishedArticlesResponseSchema = SuccessResponseSchema(UserPublishedArticlesListSchema)
+export const UserOtherArticlesResponseSchema = SuccessResponseSchema(UserOtherArticlesListSchema)
+export const UserLikedArticlesResponseSchema = SuccessResponseSchema(UserLikedArticlesListSchema)
+export const UserSavedArticlesResponseSchema = SuccessResponseSchema(UserSavedArticlesListSchema)
+export const UserRepostedArticlesResponseSchema = SuccessResponseSchema(UserRepostedArticlesListSchema);
+
+/**
+ * @deprecated Use `LikeArticleResponseSchema`.
+ */
+export const LikeArticlePayloadSchema = ArticleReactionResponseSchema;
+
+/**
+ * @deprecated Use `DislikeArticleResponseSchema`.
+ */
+export const DislikeArticlePayloadSchema = ArticleReactionResponseSchema;
+
+/**
+ * @deprecated Use `UserPublishedArticlesListSchema` in data payloads.
+ */
+export const UserPublishedArticlesListLegacySchema =
+  UserPublishedArticlesListSchema;
+
+/**
+ * @deprecated Use `UserOtherArticlesListSchema` in data payloads.
+ */
+export const UserOtherArticlesListLegacySchema = UserOtherArticlesListSchema;
+
+/**
+ * @deprecated Use `UserLikedArticlesListSchema` in data payloads.
+ */
+export const UserLikedArticlesListLegacySchema = UserLikedArticlesListSchema;
+
+/**
+ * @deprecated Use `UserSavedArticlesListSchema` in data payloads.
+ */
+export const UserSavedArticlesListLegacySchema = UserSavedArticlesListSchema;
+
+/**
+ * @deprecated Use `UserRepostedArticlesListSchema` in data payloads.
+ */
+export const UserRepostedArticlesListLegacySchema =
+  UserRepostedArticlesListSchema;

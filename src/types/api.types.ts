@@ -1,13 +1,7 @@
-export type ApiResponse<T> = {
-    data: T;
-    success: boolean;
-    message?: string;
-};
+import type {
+  ApiResponse as BaseApiResponse,
+  PaginatedSuccessResponse,
+} from './response.types';
 
-export type PaginatedResponse<T> = ApiResponse<{
-    items: T[];
-    total: number;
-    page: number;
-    limit: number;
-    hasMore: boolean;
-}>;
+export type ApiResponse<T> = BaseApiResponse<T>;
+export type PaginatedResponse<T> = PaginatedSuccessResponse<T>;
