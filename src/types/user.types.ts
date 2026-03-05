@@ -5,6 +5,8 @@ import {
   UpdateUserSchema,
   UserListResponseSchema,
   UserListSchema,
+  UserMetricsResponseSchema,
+  UserMetricsSchema,
   UserResponseSchema,
   UserRoleSchema,
   UserSchema,
@@ -18,3 +20,5 @@ export type UserList = z.infer<typeof UserListSchema>;
 export type UserResponse = z.infer<typeof UserResponseSchema>;
 export type UserListResponse = z.infer<typeof UserListResponseSchema>;
 export type UpdateUserResponse = z.infer<typeof UpdateUserResponseSchema>;
+export type UserMetricsResponse = z.infer<typeof UserMetricsResponseSchema>;
+export type UserMetrics = z.infer<typeof UserMetricsSchema>;

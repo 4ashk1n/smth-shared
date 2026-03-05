@@ -29,6 +29,13 @@ export const UnsubscribeResponseSchema = z.object({
   followingId: z.uuid(),
 });
 
+export const isSubscribedSchema = z.object({
+  followerId: z.uuid(),
+  followingId: z.uuid(),
+  subscribed: z.boolean(),
+});
+
+
 export const FollowersResponseSchema = SubscriptionListSchema;
 export const FollowingResponseSchema = SubscriptionListSchema;
 
@@ -40,3 +47,6 @@ export const UserFollowersResponseSchema =
   SuccessResponseSchema(FollowersResponseSchema);
 export const UserFollowingResponseSchema =
   SuccessResponseSchema(FollowingResponseSchema);
+export const isSubscribedResponseSchema =
+  SuccessResponseSchema(isSubscribedSchema);
+

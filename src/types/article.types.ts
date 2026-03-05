@@ -1,23 +1,24 @@
 import { z } from 'zod';
 import {
+  ArticleContentResponseSchema,
   ArticleDTOSchema,
   ArticleLegacyMainCategoryAliasSchema,
-  ArticleListResponseSchema,
   ArticleListQuerySchema,
-  ArticleMetaSchema,
+  ArticleListResponseSchema,
   ArticleMetaResponseSchema,
+  ArticleMetaSchema,
   ArticleReactionResponseSchema,
   ArticleResponseSchema,
   ArticleSchema,
-  CreateArticleResponseSchema,
   CreateArticleLegacyMainCategoryAliasSchema,
+  CreateArticleResponseSchema,
   CreateArticleSchema,
-  DislikeArticleResponseSchema,
   DislikeArticlePayloadSchema,
-  LikeArticleResponseSchema,
+  DislikeArticleResponseSchema,
   LikeArticlePayloadSchema,
-  UpdateArticleSchema,
+  LikeArticleResponseSchema,
   UpdateArticleResponseSchema,
+  UpdateArticleSchema,
   UserArticleListItemSchema,
   UserLikedArticlesListSchema,
   UserLikedArticlesResponseSchema,
@@ -63,6 +64,8 @@ export type UserOtherArticlesResponse = z.infer<typeof UserOtherArticlesResponse
 export type UserLikedArticlesResponse = z.infer<typeof UserLikedArticlesResponseSchema>;
 export type UserSavedArticlesResponse = z.infer<typeof UserSavedArticlesResponseSchema>;
 export type UserRepostedArticlesResponse = z.infer<typeof UserRepostedArticlesResponseSchema>;
+
+export type ArticleContentResponse = z.infer<typeof ArticleContentResponseSchema>;
 
 /**
  * @deprecated Use `mainCategoryId` fields.

@@ -6,7 +6,7 @@ export const TopicSchema = z.object({
     id: z.uuid(),
     articleId: z.uuid(),
     title: z.string().min(1),
-    order: z.number().int(),
+    order: z.number().int().min(1),
 });
 
 export const CreateTopicSchema = TopicSchema.omit({ id: true });
@@ -35,7 +35,7 @@ export const Object3dSchema = z.object({
 export const LayoutSchema = z.object({
     i: z.uuid(),
     x: z.number().int().min(0).max(1),
-    y: z.number().int().min(0).max(6),
+    y: z.number().int().min(1).max(6),
     w: z.number().int().min(1).max(2),
     h: z.number().int().min(2).max(8),
 })
@@ -78,24 +78,15 @@ export const BlockIconSchema = BlockSchema.extend({
 export const CreateBlockIconSchema = BlockIconSchema;
 export const UpdateBlockIconSchema = BlockIconSchema.partial();
 
-export const BlockPayloadSchema = z.discriminatedUnion('type', [
-    BlockSchema.extend({
-        type: z.literal('paragraph'),
-        paragraph: BlockParagraphSchema,
-    }),
-    BlockSchema.extend({
-        type: z.literal('image'),
-        image: BlockImageSchema,
-    }),
-    BlockSchema.extend({
-        type: z.literal('icon'),
-        icon: BlockIconSchema,
-    }),
+export const BlockUnionSchema = z.union([
+    BlockParagraphSchema,
+    BlockImageSchema,
+    BlockIconSchema,
 ]);
 
 export const ContentSchema = z.object({
     articleId: z.uuid(),
     topics: z.array(TopicSchema),
     pages: z.array(PageSchema),
-    blocks: z.array(BlockSchema),
+    blocks: z.array(BlockUnionSchema),
 });

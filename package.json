@@ -2,11 +2,27 @@
   "name": "@smth/shared",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "browser": "dist/esm/index.js",
+  "types": "dist/cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/cjs/index.d.ts",
+      "browser": "./dist/esm/index.js",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/esm/index.js"
+    }
+  },
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
+    "clean": "node -e \"require('fs').rmSync('dist',{ recursive: true, force: true })\"",
+    "build": "npm run clean && npm run build:cjs && npm run build:esm && npm run build:compat",
+    "build:cjs": "tsc -p tsconfig.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:compat": "node -e \"const fs=require('fs'); fs.writeFileSync('dist/index.js', \\\"export * from './esm/index.js';\\\"); fs.writeFileSync('dist/index.d.ts', \\\"export * from './cjs/index';\\\");\"",
+    "dev": "tsc --watch -p tsconfig.json",
+    "prepare": "npm run build",
     "prepublishOnly": "npm run build"
   },
   "keywords": [],

@@ -79,6 +79,8 @@ export const ArticleListQuerySchema = z.object({
   search: z.string().optional(),
 });
 
+export const ArticleContentResponseSchema = SuccessResponseSchema(ContentSchema);
+
 export const ArticleReactionResponseSchema = z.object({
   articleId: z.uuid(),
   liked: z.boolean(),

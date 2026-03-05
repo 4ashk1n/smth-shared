@@ -41,3 +41,10 @@ export const UserListSchema = z.array(UserSchema);
 export const UserResponseSchema = SuccessResponseSchema(UserSchema);
 export const UserListResponseSchema = SuccessResponseSchema(UserListSchema);
 export const UpdateUserResponseSchema = SuccessResponseSchema(UserSchema);
+
+export const UserMetricsSchema = z.object({
+  articles: z.number().int().min(0),
+  followers: z.number().int().min(0),
+  following: z.number().int().min(0),
+});
+export const UserMetricsResponseSchema = SuccessResponseSchema(UserMetricsSchema);

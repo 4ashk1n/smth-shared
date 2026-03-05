@@ -3,8 +3,8 @@ import {
   BlockIconSchema,
   BlockImageSchema,
   BlockParagraphSchema,
-  BlockPayloadSchema,
   BlockSchema,
+  BlockUnionSchema,
   ContentSchema,
   JsonValueSchema,
   LayoutSchema,
@@ -23,6 +23,6 @@ export type BlockType = Block['type'];
 export type Paragraph = z.infer<typeof BlockParagraphSchema>;
 export type Image = z.infer<typeof BlockImageSchema>;
 export type Icon = z.infer<typeof BlockIconSchema>;
-export type BlockPayload = z.infer<typeof BlockPayloadSchema>;
+export type BlockPayload = z.infer<typeof BlockUnionSchema>;
 export type Object3d = z.infer<typeof Object3dSchema>;
 export type Layout = z.infer<typeof LayoutSchema>;

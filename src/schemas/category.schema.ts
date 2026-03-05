@@ -1,7 +1,11 @@
 import { z } from 'zod';
 import { SuccessResponseSchema } from './response.schema';
 
-export const CategoryColorsSchema = z.unknown();
+export const CategoryColorsSchema = z.object({
+  accentColor: z.string(),
+  darkColor: z.string(),
+  lightColor: z.string(),
+});
 
 export const CategorySchema = z.object({
   id: z.uuid(),
