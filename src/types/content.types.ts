@@ -7,6 +7,8 @@ import {
   BlockSchema,
   ContentSchema,
   JsonValueSchema,
+  LayoutSchema,
+  Object3dSchema,
   PageSchema,
   TopicSchema,
 } from '../schemas/content.schema';
@@ -22,3 +24,5 @@ export type Paragraph = z.infer<typeof BlockParagraphSchema>;
 export type Image = z.infer<typeof BlockImageSchema>;
 export type Icon = z.infer<typeof BlockIconSchema>;
 export type BlockPayload = z.infer<typeof BlockPayloadSchema>;
+export type Object3d = z.infer<typeof Object3dSchema>;
+export type Layout = z.infer<typeof LayoutSchema>;

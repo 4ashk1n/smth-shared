@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { ContentSchema } from './content.schema';
 import {
   PaginatedSuccessResponseSchema,
   SuccessResponseSchema,
@@ -17,7 +18,7 @@ export const ArticleSchema = z.object({
   id: z.uuid(),
   title: z.string().min(1),
   description: z.string().nullable(),
-  content: z.unknown(),
+  content: ContentSchema,
   authorId: z.uuid(),
   mainCategoryId: z.uuid(),
   categories: z.array(z.uuid()).default([]),
@@ -40,9 +41,7 @@ export const ArticleMetaSchema = ArticleSchema.pick({
   updatedAt: true,
 });
 
-export const ArticleDTOSchema = ArticleSchema.extend({
-  topics: z.array(z.unknown()).optional(),
-});
+export const ArticleDTOSchema = ArticleSchema
 
 /**
  * @deprecated Use `mainCategoryId`.
