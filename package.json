@@ -21,7 +21,7 @@
     "build:cjs": "tsc -p tsconfig.json",
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:compat": "node -e \"const fs=require('fs'); fs.writeFileSync('dist/index.js', \\\"export * from './esm/index.js';\\\"); fs.writeFileSync('dist/index.d.ts', \\\"export * from './cjs/index';\\\");\"",
-    "dev": "tsc --watch -p tsconfig.json",
+    "dev": "npm run build && node scripts/dev-watch.cjs",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build"
   },

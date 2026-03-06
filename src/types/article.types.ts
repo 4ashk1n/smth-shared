@@ -7,6 +7,8 @@ import {
   ArticleListResponseSchema,
   ArticleMetaResponseSchema,
   ArticleMetaSchema,
+  ArticleMetricsResponseSchema,
+  ArticleMetricsSchema,
   ArticleReactionResponseSchema,
   ArticleResponseSchema,
   ArticleSchema,
@@ -17,6 +19,8 @@ import {
   DislikeArticleResponseSchema,
   LikeArticlePayloadSchema,
   LikeArticleResponseSchema,
+  RepostArticleResponseSchema,
+  SaveArticleResponseSchema,
   UpdateArticleResponseSchema,
   UpdateArticleSchema,
   UserArticleListItemSchema,
@@ -43,6 +47,9 @@ export type ArticleUpdate = z.infer<typeof UpdateArticleSchema>;
 export type ArticleReactionResponse = z.infer<typeof ArticleReactionResponseSchema>;
 export type LikeArticleResponse = z.infer<typeof LikeArticleResponseSchema>;
 export type DislikeArticleResponse = z.infer<typeof DislikeArticleResponseSchema>;
+export type RepostArticleResponse = z.infer<typeof RepostArticleResponseSchema>;
+export type SaveArticleResponse = z.infer<typeof SaveArticleResponseSchema>;
+
 export type LikeArticlePayload = z.infer<typeof LikeArticlePayloadSchema>;
 export type DislikeArticlePayload = z.infer<typeof DislikeArticlePayloadSchema>;
 
@@ -66,6 +73,10 @@ export type UserSavedArticlesResponse = z.infer<typeof UserSavedArticlesResponse
 export type UserRepostedArticlesResponse = z.infer<typeof UserRepostedArticlesResponseSchema>;
 
 export type ArticleContentResponse = z.infer<typeof ArticleContentResponseSchema>;
+export type ArticleMetricsResponse = z.infer<typeof ArticleMetricsResponseSchema>;
+export type ArticleMetrics = z.infer<typeof ArticleMetricsSchema>;
+
+
 
 /**
  * @deprecated Use `mainCategoryId` fields.

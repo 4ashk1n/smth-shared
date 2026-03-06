@@ -87,6 +87,18 @@ export const ArticleReactionResponseSchema = z.object({
   disliked: z.boolean(),
 });
 
+export const ArticleMetricsSchema = z.object({
+  views: z.number().int().min(0),
+  liked: z.boolean(),
+  likes: z.number().int().min(0),
+  comments: z.number().int().min(0),
+  reposts: z.number().int().min(0),
+  reposted: z.boolean(),
+  saves: z.number().int().min(0),
+  saved: z.boolean(),
+});
+
+
 export const UserArticleListItemSchema = ArticleMetaSchema;
 export const UserPublishedArticlesListSchema = z.array(UserArticleListItemSchema);
 export const UserOtherArticlesListSchema = z.array(UserArticleListItemSchema);
@@ -101,12 +113,16 @@ export const CreateArticleResponseSchema = SuccessResponseSchema(ArticleSchema);
 export const UpdateArticleResponseSchema = SuccessResponseSchema(ArticleSchema);
 export const LikeArticleResponseSchema = SuccessResponseSchema(ArticleReactionResponseSchema);
 export const DislikeArticleResponseSchema = SuccessResponseSchema(ArticleReactionResponseSchema);
+export const RepostArticleResponseSchema = SuccessResponseSchema(ArticleReactionResponseSchema);
+export const SaveArticleResponseSchema = SuccessResponseSchema(ArticleReactionResponseSchema);
 
 export const UserPublishedArticlesResponseSchema = SuccessResponseSchema(UserPublishedArticlesListSchema)
 export const UserOtherArticlesResponseSchema = SuccessResponseSchema(UserOtherArticlesListSchema)
 export const UserLikedArticlesResponseSchema = SuccessResponseSchema(UserLikedArticlesListSchema)
 export const UserSavedArticlesResponseSchema = SuccessResponseSchema(UserSavedArticlesListSchema)
 export const UserRepostedArticlesResponseSchema = SuccessResponseSchema(UserRepostedArticlesListSchema);
+
+export const ArticleMetricsResponseSchema = SuccessResponseSchema(ArticleMetricsSchema);
 
 /**
  * @deprecated Use `LikeArticleResponseSchema`.
