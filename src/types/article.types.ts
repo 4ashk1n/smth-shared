@@ -12,9 +12,12 @@ import {
   ArticleReactionResponseSchema,
   ArticleResponseSchema,
   ArticleSchema,
+  ArticleStatusSchema,
   CreateArticleLegacyMainCategoryAliasSchema,
   CreateArticleResponseSchema,
   CreateArticleSchema,
+  CreateEmptyDraftResponseSchema,
+  CreateEmptyDraftSchema,
   DislikeArticlePayloadSchema,
   DislikeArticleResponseSchema,
   LikeArticlePayloadSchema,
@@ -36,6 +39,7 @@ import {
   UserSavedArticlesResponseSchema,
 } from '../schemas/article.schema';
 
+export type ArticleStatus = z.infer<typeof ArticleStatusSchema>;
 export type ArticleMeta = z.infer<typeof ArticleMetaSchema>;
 export type Article = z.infer<typeof ArticleSchema>;
 export type ArticleDTO = z.infer<typeof ArticleDTOSchema>;
@@ -58,6 +62,8 @@ export type ArticleMetaResponse = z.infer<typeof ArticleMetaResponseSchema>;
 export type ArticleListResponse = z.infer<typeof ArticleListResponseSchema>;
 export type CreateArticleResponse = z.infer<typeof CreateArticleResponseSchema>;
 export type UpdateArticleResponse = z.infer<typeof UpdateArticleResponseSchema>;
+export type CreateEmptyDraft = z.infer<typeof CreateEmptyDraftSchema>;
+export type CreateEmptyDraftResponse = z.infer<typeof CreateEmptyDraftResponseSchema>;
 
 export type UserArticleListItem = z.infer<typeof UserArticleListItemSchema>;
 export type UserPublishedArticlesList = z.infer<typeof UserPublishedArticlesListSchema>;

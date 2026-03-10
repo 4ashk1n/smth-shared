@@ -16,7 +16,7 @@ export const ArticleStatusSchema = z.enum([
 
 export const ArticleSchema = z.object({
   id: z.uuid(),
-  title: z.string().min(1),
+  title: z.string().min(0),
   description: z.string().nullable(),
   content: ContentSchema,
   authorId: z.uuid(),
@@ -51,13 +51,22 @@ export const ArticleLegacyMainCategoryAliasSchema = z.object({
 });
 
 export const CreateArticleSchema = z.object({
-  title: z.string().min(1),
+  title: z.string().min(0),
   description: z.string().nullable().optional(),
   content: z.unknown(),
   authorId: z.uuid(),
-  mainCategoryId: z.uuid(),
+  mainCategoryId: z.uuid().nullable(),
   status: ArticleStatusSchema.default('draft'),
   publishedAt: DateTimeSchema.nullable().optional(),
+  categoryIds: z.array(z.uuid()).optional(),
+});
+
+export const SendForReviewSchema = z.object({
+  title: z.string().min(1),
+  description: z.string().nullable().optional(),
+  content: ContentSchema,
+  authorId: z.uuid(),
+  mainCategoryId: z.uuid(),
   categoryIds: z.array(z.uuid()).optional(),
 });
 
@@ -98,6 +107,12 @@ export const ArticleMetricsSchema = z.object({
   saved: z.boolean(),
 });
 
+export const CreateEmptyDraftSchema = z.object({
+  authorId: z.uuid()
+});
+export const CreateEmptyDraftResponseSchema = SuccessResponseSchema(z.object({
+  id: z.uuid()
+}));
 
 export const UserArticleListItemSchema = ArticleMetaSchema;
 export const UserPublishedArticlesListSchema = z.array(UserArticleListItemSchema);
