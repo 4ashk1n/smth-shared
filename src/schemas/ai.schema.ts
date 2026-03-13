@@ -30,5 +30,9 @@ export const AiSuggestionsResponseSchema = z.object({
   suggestions: z.array(AiSuggestionSchema),
 });
 
-export const AiSuggestionRequestSchema = ArticleSchema;
+export const AiSuggestionRequestSchema = z.object({
+  draftId: z.uuid(),
+});
+
+export const AiSuggestionUpstreamRequestSchema = ArticleSchema;
 export const AiSuggestionModeSchema = z.enum(['layout', 'text', 'all']);
