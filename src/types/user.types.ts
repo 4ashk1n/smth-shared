@@ -5,6 +5,7 @@ import {
   UpdateUserSchema,
   UserListResponseSchema,
   UserListSchema,
+  UserMetaSchema,
   UserMetricsResponseSchema,
   UserMetricsSchema,
   UserResponseSchema,
@@ -12,6 +13,7 @@ import {
   UserSchema,
 } from '../schemas/user.schema';
 
+export type UserMeta = z.infer<typeof UserMetaSchema>;
 export type User = z.infer<typeof UserSchema>;
 export type UserRole = z.infer<typeof UserRoleSchema>;
 export type UserCreate = z.infer<typeof CreateUserSchema>;

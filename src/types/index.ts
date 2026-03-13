@@ -1,9 +1,11 @@
+export * from './ai.types';
 export type { PaginatedResponse } from './api.types';
 export * from './article.types';
 export * from './auth.types';
 export * from './category.types';
 export * from './content.types';
 export * from './response.types';
+export * from './search.types';
 export * from './subscription.types';
 export * from './user.types';
 export * from './user-article-metric.types';

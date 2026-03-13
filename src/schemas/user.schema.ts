@@ -7,14 +7,17 @@ export const UserRoleSchema = z.enum([
   'admin',
 ]);
 
-export const UserSchema = z.object({
+export const UserMetaSchema = z.object({
   id: z.uuid(),
   username: z.string(),
   firstname: z.string(),
   lastname: z.string(),
   avatar: z.string(),
+})
+
+export const UserSchema = UserMetaSchema.extend({
   role: UserRoleSchema,
-  email: z.string().email().nullable(),
+  email: z.email().nullable(),
   googleId: z.string().nullable(),
   refreshTokenHash: z.string().nullable(),
   provider: z.string().nullable(),
