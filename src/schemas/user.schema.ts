@@ -38,12 +38,23 @@ export const CreateUserSchema = z.object({
 });
 
 export const UpdateUserSchema = CreateUserSchema.partial();
+export const UpdateUserProfileSchema = z
+  .object({
+    firstname: z.string().trim().min(1).max(64).optional(),
+    lastname: z.string().trim().min(1).max(64).optional(),
+    username: z.string().trim().min(3).max(32).regex(/^[a-zA-Z0-9_.]+$/).optional(),
+    avatar: z.string().url().or(z.literal("")).optional(),
+  })
+  .refine((value) => Object.keys(value).length > 0, {
+    message: "At least one field should be provided",
+  });
 
 export const UserListSchema = z.array(UserSchema);
 
 export const UserResponseSchema = SuccessResponseSchema(UserSchema);
 export const UserListResponseSchema = SuccessResponseSchema(UserListSchema);
 export const UpdateUserResponseSchema = SuccessResponseSchema(UserSchema);
+export const UpdateUserProfileResponseSchema = SuccessResponseSchema(UserMetaSchema);
 
 export const UserMetricsSchema = z.object({
   articles: z.number().int().min(0),
