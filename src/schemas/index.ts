@@ -4,6 +4,7 @@ export * from './article.schema';
 export * from './category.schema';
 export * from './content.schema';
 export * from './response.schema';
+export * from './s3.schema';
 export * from './search.schema';
 export * from './subscription.schema';
 export * from './user.schema';
