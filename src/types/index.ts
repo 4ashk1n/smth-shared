@@ -3,6 +3,7 @@ export type { PaginatedResponse } from './api.types';
 export * from './article.types';
 export * from './auth.types';
 export * from './category.types';
+export * from './comment.types';
 export * from './content.types';
 export * from './response.types';
 export * from './s3.types';
