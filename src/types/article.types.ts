@@ -13,6 +13,8 @@ import {
   ArticleResponseSchema,
   ArticleSchema,
   ArticleStatusSchema,
+  UpdateArticleReadMetricsResponseSchema,
+  UpdateArticleReadMetricsSchema,
   CreateArticleLegacyMainCategoryAliasSchema,
   CreateArticleResponseSchema,
   CreateArticleSchema,
@@ -81,6 +83,8 @@ export type UserRepostedArticlesResponse = z.infer<typeof UserRepostedArticlesRe
 export type ArticleContentResponse = z.infer<typeof ArticleContentResponseSchema>;
 export type ArticleMetricsResponse = z.infer<typeof ArticleMetricsResponseSchema>;
 export type ArticleMetrics = z.infer<typeof ArticleMetricsSchema>;
+export type UpdateArticleReadMetrics = z.infer<typeof UpdateArticleReadMetricsSchema>;
+export type UpdateArticleReadMetricsResponse = z.infer<typeof UpdateArticleReadMetricsResponseSchema>;
 
 
 

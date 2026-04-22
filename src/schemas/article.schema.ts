@@ -107,6 +107,30 @@ export const ArticleMetricsSchema = z.object({
   saved: z.boolean(),
 });
 
+export const UpdateArticleReadMetricsSchema = z
+  .object({
+    focusTimeDelta: z.number().int().min(0).default(0),
+    viewedPagesDelta: z.number().int().min(0).default(0),
+    firstViewedAt: DateTimeSchema.nullable().optional(),
+    lastViewedAt: DateTimeSchema.nullable().optional(),
+  })
+  .refine(
+    (value) =>
+      value.focusTimeDelta > 0 ||
+      value.viewedPagesDelta > 0 ||
+      value.firstViewedAt !== undefined ||
+      value.lastViewedAt !== undefined,
+    {
+      message: "At least one metric field must be provided",
+    },
+  );
+
+export const UpdateArticleReadMetricsResponseSchema = SuccessResponseSchema(
+  z.object({
+    articleId: z.uuid(),
+  }),
+);
+
 export const CreateEmptyDraftSchema = z.object({
   authorId: z.uuid()
 });
@@ -138,6 +162,7 @@ export const UserSavedArticlesResponseSchema = SuccessResponseSchema(UserSavedAr
 export const UserRepostedArticlesResponseSchema = SuccessResponseSchema(UserRepostedArticlesListSchema);
 
 export const ArticleMetricsResponseSchema = SuccessResponseSchema(ArticleMetricsSchema);
+export const UpdateArticleReadMetricsPayloadSchema = UpdateArticleReadMetricsSchema;
 
 /**
  * @deprecated Use `LikeArticleResponseSchema`.
