@@ -5,6 +5,7 @@ export * from './auth.types';
 export * from './category.types';
 export * from './comment.types';
 export * from './content.types';
+export * from './notification.types';
 export * from './response.types';
 export * from './s3.types';
 export * from './search.types';
