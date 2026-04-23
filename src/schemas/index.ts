@@ -1,4 +1,5 @@
-export * from './ai.schema';
+﻿export * from './ai.schema';
+export * from './admin.schema';
 export * from './auth.schema';
 export * from './article.schema';
 export * from './category.schema';
@@ -12,3 +13,6 @@ export * from './subscription.schema';
 export * from './user.schema';
 export * from './user-article-metric.schema';
 export * from './user-feed.schema';
+
+export * from './review-remark.schema';
+
