@@ -27,6 +27,7 @@ export const UserSchema = UserMetaSchema.extend({
   role: UserRoleSchema,
   email: z.email().nullable(),
   googleId: z.string().nullable(),
+  tiktokId: z.string().nullable(),
   refreshTokenHash: z.string().nullable(),
   provider: z.string().nullable(),
   createdAt: z.date(),
@@ -41,6 +42,7 @@ export const CreateUserSchema = z.object({
   role: UserRoleSchema.default('user'),
   email: z.string().email().nullable().optional(),
   googleId: z.string().nullable().optional(),
+  tiktokId: z.string().nullable().optional(),
   refreshTokenHash: z.string().nullable().optional(),
   provider: z.string().nullable().default('local'),
 });
