@@ -7,12 +7,20 @@ export const UserRoleSchema = z.enum([
   'admin',
 ]);
 
+export const NotificationSettingsSchema = z.object({
+  likes: z.boolean(),
+  comments: z.boolean(),
+  subscriptions: z.boolean(),
+  articleStatus: z.boolean(),
+});
+
 export const UserMetaSchema = z.object({
   id: z.uuid(),
   username: z.string(),
   firstname: z.string(),
   lastname: z.string(),
   avatar: z.string(),
+  notificationSettings: NotificationSettingsSchema.nullable().optional(),
 })
 
 export const UserSchema = UserMetaSchema.extend({
@@ -44,6 +52,11 @@ export const UpdateUserProfileSchema = z
     lastname: z.string().trim().min(1).max(64).optional(),
     username: z.string().trim().min(3).max(32).regex(/^[a-zA-Z0-9_.]+$/).optional(),
     avatar: z.string().url().or(z.literal("")).optional(),
+    notificationSettings: NotificationSettingsSchema.partial()
+      .refine((value) => Object.keys(value).length > 0, {
+        message: "At least one notification setting should be provided",
+      })
+      .optional(),
   })
   .refine((value) => Object.keys(value).length > 0, {
     message: "At least one field should be provided",
