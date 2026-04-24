@@ -32,11 +32,14 @@ export const AdminUserListItemSchema = z.object({
   role: UserRoleSchema,
   email: z.email().nullable(),
   provider: z.string().nullable(),
+  isBanned: z.boolean(),
+  bannedAt: DateTimeSchema.nullable(),
   createdAt: DateTimeSchema,
   updatedAt: DateTimeSchema,
 });
 
 export const AdminModerateArticleResponseSchema = SuccessResponseSchema(ArticleMetaSchema);
+export const AdminModerateUserResponseSchema = SuccessResponseSchema(AdminUserListItemSchema);
 export const AdminReviewArticleListResponseSchema = PaginatedSuccessResponseSchema(ArticleMetaSchema);
 export const AdminUserListResponseSchema = PaginatedSuccessResponseSchema(AdminUserListItemSchema);
 export const AdminUserArticleListResponseSchema = PaginatedSuccessResponseSchema(ArticleMetaSchema);

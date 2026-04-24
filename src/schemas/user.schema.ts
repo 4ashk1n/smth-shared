@@ -28,6 +28,8 @@ export const UserSchema = UserMetaSchema.extend({
   email: z.email().nullable(),
   googleId: z.string().nullable(),
   tiktokId: z.string().nullable(),
+  isBanned: z.boolean(),
+  bannedAt: z.date().nullable(),
   refreshTokenHash: z.string().nullable(),
   provider: z.string().nullable(),
   createdAt: z.date(),
@@ -43,6 +45,8 @@ export const CreateUserSchema = z.object({
   email: z.string().email().nullable().optional(),
   googleId: z.string().nullable().optional(),
   tiktokId: z.string().nullable().optional(),
+  isBanned: z.boolean().default(false),
+  bannedAt: z.date().nullable().optional(),
   refreshTokenHash: z.string().nullable().optional(),
   provider: z.string().nullable().default('local'),
 });
