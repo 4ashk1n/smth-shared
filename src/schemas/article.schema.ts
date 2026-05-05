@@ -43,12 +43,6 @@ export const ArticleMetaSchema = ArticleSchema.pick({
 
 export const ArticleDTOSchema = ArticleSchema
 
-/**
- * @deprecated Use `mainCategoryId`.
- */
-export const ArticleLegacyMainCategoryAliasSchema = z.object({
-  mainCategory: z.uuid(),
-});
 
 export const CreateArticleSchema = z.object({
   title: z.string().min(0),
@@ -70,12 +64,6 @@ export const SendForReviewSchema = z.object({
   categoryIds: z.array(z.uuid()).optional(),
 });
 
-/**
- * @deprecated Use `mainCategoryId`.
- */
-export const CreateArticleLegacyMainCategoryAliasSchema = z.object({
-  mainCategory: z.uuid(),
-});
 
 export const UpdateArticleSchema = CreateArticleSchema.partial();
 
@@ -164,39 +152,3 @@ export const UserRepostedArticlesResponseSchema = SuccessResponseSchema(UserRepo
 export const ArticleMetricsResponseSchema = SuccessResponseSchema(ArticleMetricsSchema);
 export const UpdateArticleReadMetricsPayloadSchema = UpdateArticleReadMetricsSchema;
 
-/**
- * @deprecated Use `LikeArticleResponseSchema`.
- */
-export const LikeArticlePayloadSchema = ArticleReactionResponseSchema;
-
-/**
- * @deprecated Use `DislikeArticleResponseSchema`.
- */
-export const DislikeArticlePayloadSchema = ArticleReactionResponseSchema;
-
-/**
- * @deprecated Use `UserPublishedArticlesListSchema` in data payloads.
- */
-export const UserPublishedArticlesListLegacySchema =
-  UserPublishedArticlesListSchema;
-
-/**
- * @deprecated Use `UserOtherArticlesListSchema` in data payloads.
- */
-export const UserOtherArticlesListLegacySchema = UserOtherArticlesListSchema;
-
-/**
- * @deprecated Use `UserLikedArticlesListSchema` in data payloads.
- */
-export const UserLikedArticlesListLegacySchema = UserLikedArticlesListSchema;
-
-/**
- * @deprecated Use `UserSavedArticlesListSchema` in data payloads.
- */
-export const UserSavedArticlesListLegacySchema = UserSavedArticlesListSchema;
-
-/**
- * @deprecated Use `UserRepostedArticlesListSchema` in data payloads.
- */
-export const UserRepostedArticlesListLegacySchema =
-  UserRepostedArticlesListSchema;

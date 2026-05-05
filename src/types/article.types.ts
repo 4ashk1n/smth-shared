@@ -2,7 +2,6 @@ import { z } from 'zod';
 import {
   ArticleContentResponseSchema,
   ArticleDTOSchema,
-  ArticleLegacyMainCategoryAliasSchema,
   ArticleListQuerySchema,
   ArticleListResponseSchema,
   ArticleMetaResponseSchema,
@@ -13,19 +12,16 @@ import {
   ArticleResponseSchema,
   ArticleSchema,
   ArticleStatusSchema,
-  UpdateArticleReadMetricsResponseSchema,
-  UpdateArticleReadMetricsSchema,
-  CreateArticleLegacyMainCategoryAliasSchema,
   CreateArticleResponseSchema,
   CreateArticleSchema,
   CreateEmptyDraftResponseSchema,
   CreateEmptyDraftSchema,
-  DislikeArticlePayloadSchema,
   DislikeArticleResponseSchema,
-  LikeArticlePayloadSchema,
   LikeArticleResponseSchema,
   RepostArticleResponseSchema,
   SaveArticleResponseSchema,
+  UpdateArticleReadMetricsResponseSchema,
+  UpdateArticleReadMetricsSchema,
   UpdateArticleResponseSchema,
   UpdateArticleSchema,
   UserArticleListItemSchema,
@@ -56,9 +52,6 @@ export type DislikeArticleResponse = z.infer<typeof DislikeArticleResponseSchema
 export type RepostArticleResponse = z.infer<typeof RepostArticleResponseSchema>;
 export type SaveArticleResponse = z.infer<typeof SaveArticleResponseSchema>;
 
-export type LikeArticlePayload = z.infer<typeof LikeArticlePayloadSchema>;
-export type DislikeArticlePayload = z.infer<typeof DislikeArticlePayloadSchema>;
-
 export type ArticleResponse = z.infer<typeof ArticleResponseSchema>;
 export type ArticleMetaResponse = z.infer<typeof ArticleMetaResponseSchema>;
 export type ArticleListResponse = z.infer<typeof ArticleListResponseSchema>;
@@ -85,15 +78,3 @@ export type ArticleMetricsResponse = z.infer<typeof ArticleMetricsResponseSchema
 export type ArticleMetrics = z.infer<typeof ArticleMetricsSchema>;
 export type UpdateArticleReadMetrics = z.infer<typeof UpdateArticleReadMetricsSchema>;
 export type UpdateArticleReadMetricsResponse = z.infer<typeof UpdateArticleReadMetricsResponseSchema>;
-
-
-
-/**
- * @deprecated Use `mainCategoryId` fields.
- */
-export type ArticleLegacyMainCategoryAlias = z.infer<typeof ArticleLegacyMainCategoryAliasSchema>;
-
-/**
- * @deprecated Use `CreateArticleSchema` with `mainCategoryId`.
- */
-export type CreateArticleLegacyMainCategoryAlias = z.infer<typeof CreateArticleLegacyMainCategoryAliasSchema>;
